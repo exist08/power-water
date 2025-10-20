@@ -23,6 +23,7 @@ body{
     color: #fff;
     font-size: 16px;
     position: relative;
+    overflow-x: hidden;
 }
 
 header{
@@ -49,7 +50,7 @@ header .hamburger{
 header nav ul{
     list-style: none;
     display: flex;
-    gap: 4rem;
+    gap: 3rem;
     transition: .5s;
 }
 header nav ul li a{
@@ -58,10 +59,29 @@ header nav ul li a{
     font-size: 1rem;
     font-weight: 400;
     transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    padding: .5rem 1rem;
+    border-radius: 30px;
+    span.arrow{
+        top: 4px;
+        right: 0px;
+        position: absolute;
+        font-size: 1.5em;
+        transition: .3s;
+    }
+}
+header nav ul li a:has(>span){
+    padding-right: 2rem;
 }
 header nav ul li a:hover{
-    color: #000;
     background-color: #fff;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.9);
+    color: #000;
+    span.arrow{
+        rotate: 180deg;
+    }
 }
 
 section.hero{
@@ -546,7 +566,7 @@ section.best-supers>.content{
 
 @media screen and (max-width: 1280px) {
     header{
-        padding: 1rem min(8rem,10%);
+        padding: 1rem min(5rem,10%);
     }
     header nav ul{
         list-style: none;
@@ -611,7 +631,51 @@ section.best-supers>.content{
     header nav ul{
         list-style: none;
         display: flex;
-        gap: 2rem;
+        gap: 1rem;
+    }
+    section.hero{
+        height: unset;
+        min-height: 112vh;
+        padding-top: 12vh;
+        width: 100%;
+    }
+    section.hero>.content{
+        width: 100%;
+        backdrop-filter: blur(100px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 8rem;
+    }
+    section.hero>.content>*{
+        position: relative;
+        width: 100%; 
+        height: 100%;
+        padding: 2rem;
+    }
+    .content-box p{
+        /* outline: 2px solid red; */
+        width: 100%;
+        background-clip: content-box;
+        font-size: 0.875rem;
+    }
+    .content-box h1{
+        font-family: 'HelveticaNowMicroBold', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        color: #fff;
+    }
+    .content>.imgbox>img:first-child{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+    }
+    .content>.imgbox>img:last-child{   
+        position: static;
+        object-position: center;
     }
     section.explore-flavours>.content .flavours-container{
         display: flex;
@@ -702,19 +766,71 @@ section.best-supers>.content{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
         padding: 2rem;
         touch-action: none;
         transition: .5s;
         li a{
             font-size: 2rem;
+            transition: .5s;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 10px #ffffff20;
         }
     }
     header nav ul.active{
         position: fixed;
         transform: translateX(0);
         z-index: 10;
+        background-color: rgba(0,0,0,0.5);
         backdrop-filter: blur(10px);
+    }
+    section.hero{
+        position: relative;
+        height: unset;
+        min-height: 112vh;
+        padding-top: 12vh;
+        width: 100%;
+    }
+    section.hero>.content{
+        width: 100%;
+        backdrop-filter: blur(100px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 4rem;
+    }
+    section.hero>.content>*{
+        position: relative;
+        width: 100%; 
+        height: 100%;
+        padding: 2rem 0;
+    }
+    .content-box p{
+        /* outline: 2px solid red; */
+        width: 100%;
+        background-clip: content-box;
+        font-size: 0.875rem;
+    }
+    .content-box h1{
+        font-family: 'HelveticaNowMicroBold', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        color: #fff;
+    }
+    .content>.imgbox>img:first-child{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+    }
+    .content>.imgbox>img:last-child{   
+        position: static;
+        object-position: center;
     }
     section.nutritonal-info .big-text-container{
         display: flex;
@@ -812,10 +928,37 @@ section.best-supers>.content{
             }
         }
     }
+    /* Thumnails */
+    .thumnails{
+        gap: 1.5rem;
+        margin-top: 2rem;
+        height: 9rem;
+    }
+    .thumnail img{
+        height: 70%;
+    }
+    .thumnail span{
+        font-size: .75rem;
+    }
 }
 
 
 @media screen and (max-width: 480px) {
+    section.hero>.content{
+        padding: 4rem 2rem;
+    }
+    /* Thumnails */
+    .thumnails{
+        gap: 1.5rem;
+        margin-top: 2rem;
+        height: max(6rem,30vw);
+    }
+    .thumnail img{
+        height: 70%;
+    }
+    .thumnail span{
+        font-size: .75rem;
+    }
     section.best-supers>.content{
         position: relative;
         overflow: hidden;
@@ -847,7 +990,7 @@ section.best-supers>.content{
         }
         .best-supers-imgbox.right{
             img{
-                object-position: -14px 105px;
+                object-position: -14px 70px;
                 scale: 1.2;
             }
         }
