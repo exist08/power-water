@@ -1,0 +1,855 @@
+@font-face {
+    font-family: 'HelveticaNowMicro';
+    src: url(./assets/fonts/HelveticaNowMicro-Regular.ttf);
+}
+@font-face {
+    font-family: 'HelveticaNowMicroBold';
+    src: url(./assets/fonts/HelveticaNowMicro-Bold.ttf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: #000;
+    min-height: 100vh;
+    font-family: 'HelveticaNowMicro', sans-serif;
+    color: #fff;
+    font-size: 16px;
+    position: relative;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 8rem;
+    background-color: transparent;
+    min-height: 12vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+header .logo{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+header .hamburger{
+    display: none;
+}
+header nav ul{
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+    transition: .5s;
+}
+header nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+header nav ul li a:hover{
+    color: #000;
+    background-color: #fff;
+}
+
+section.hero{
+    position: relative;
+    height: 112vh;
+    padding-top: 12vh;
+}
+section.hero>.content{
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(100px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 8rem;
+}
+section.hero>.content>*{
+    position: relative;
+    width: 50%; 
+    height: 100%;
+    /* outline: 2px solid red; */
+    padding: 2rem;
+}
+section.hero>.ellipse{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #9EBC05;
+    clip-path: ellipse(100% 20% at 50% 50%);
+    filter: blur(300.06px);
+    opacity: 0.3;
+}
+.content>.imgbox>img:first-child{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: contain;
+}
+.content>.imgbox>img:last-child{   
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: -100px 80px;
+    scale: 1.35;
+    transition: 1s ease;
+}
+/* Content Box */
+.content-box p{
+    /* outline: 2px solid red; */
+    width: max(65%,400px);
+    background-clip: content-box;
+    font-size: 0.875rem;
+}
+.content-box h1{
+    font-family: 'HelveticaNowMicroBold', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+.content-box>span{
+    font-family: 'HelveticaNowMicroBold', sans-serif;
+    font-size: 1.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Thumnails */
+.thumnails{
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    height: 9rem;
+    transition: .5s ease;
+}
+.thumnail{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.thumnail img{
+    height: 80%;
+    aspect-ratio: 1/1;
+    background: #111401;
+    object-fit: contain;
+    border-radius: .75rem;
+    border: 2px solid #2d2d2d;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.thumnail:hover img{
+    transform: scale(1.1);
+    border: 2px solid #93C621;
+}
+.thumnail span{
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+}
+
+/* Cart Buttons Container */
+.cart-buttons-container{
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    height: 2.5rem;
+}
+.cart-buttons-container .cart-button{
+    outline: none;
+    border: none;
+    background: #93C621;
+    border-radius: 12px;
+    font-family: 'HelveticaNowMicroBold', sans-serif;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+.cart-buttons-container .cart-count{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'HelveticaNowMicroBold', sans-serif;
+    font-size: 1rem;
+    border: 2px solid #2d2d2d;
+    border-radius: 12px;
+    height: 100%;
+    background: #000;
+    padding: 0 2rem;
+    align-self: stretch;
+}
+
+button.add-to-cart{
+    margin-top: 2rem;
+}
+
+/*******************************/
+/* Nutritional Info */
+section.nutritonal-info{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    z-index: -1;
+}
+section.nutritonal-info>.content{
+    padding: 4rem min(8rem,10%);
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(100px);
+}
+section.nutritonal-info>.ellipse{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #3932FF73;
+    clip-path: ellipse(100% 20% at 50% 50%);
+    filter: blur(100px);
+    opacity: 0.3;
+}
+section.nutritonal-info>.content>h2{
+    font-family: 'HelveticaNowMicroBold', sans-serif;
+    width: 100%;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    transition: .5s;
+    text-transform: uppercase;
+}
+section.nutritonal-info .big-text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-family: 'HelveticaNowMicroBold', sans-serif;
+    span.zero{
+        background: linear-gradient(152.52deg, #9DBA08 11.06%, rgba(99, 96, 227, 0) 89.92%);
+        font-weight: 900;
+        font-size: 6em;
+        /* -webkit-text-stroke: red; */
+        /* -webkit-text-stroke-width: 2px; */
+    }
+    p{
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+section.nutritonal-info>.content>.info-cards{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8rem;
+    margin-top: 2rem;
+}
+section.nutritonal-info>.content>.info-cards>.info-card{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    max-width: 8rem;
+    text-align: center;
+    .info-card-title{
+        font-size: .75rem;
+        width: 80%;
+    }
+}
+section.nutritonal-info>.content>.info-cards>.info-card>.info-card-ingredient{
+    background: linear-gradient(92.65deg, #9DCEFA 9.65%, #293E7D 127.93%);
+}
+section.nutritonal-info>.content>.info-cards>.info-card:nth-child(2)>.info-card-ingredient{
+    background: linear-gradient(92.58deg, #FACF9D 9.65%, #2E201A 145.1%);
+}
+section.nutritonal-info>.content>.info-cards>.info-card:nth-child(3)>.info-card-ingredient{
+    background: linear-gradient(92.65deg, #A3A881 9.65%, #2F3F1E 127.93%);
+}
+section.nutritonal-info>.content>.info-cards>.info-card:nth-child(4)>.info-card-ingredient{
+    background: linear-gradient(92.65deg, #FA9DA8 9.65%, #6D293D 127.93%);
+}
+section.nutritonal-info>.content>.info-cards>.info-card:nth-child(5)>.info-card-ingredient{
+    background: linear-gradient(92.65deg, #E29DFA 9.65%, #87439A 127.93%);
+}
+.clip-text{
+    background-clip: text !important;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*********************************/
+/* Explore Flavours */
+section.explore-flavours{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 10vh;
+}
+section.explore-flavours>.content{
+    padding: 4rem 8rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    align-items: center;
+    h2{
+        text-transform: uppercase;
+        font-size: 4rem;
+        font-family: 'HelveticaNowMicroBold', sans-serif;
+    }
+}
+section.explore-flavours>.content .flavours-container{
+    display: flex;
+    justify-content: space-between;
+    height: 70%;
+    width: 100%;
+    gap: max(3%,2rem);
+    .flavour{
+        width: 30%;
+        height: 100%;
+        position: relative;
+        .flavour-ellipse-bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #3932FF73;
+            clip-path: ellipse(20% 20% at 50% 50%);
+            filter: blur(150px);
+            z-index: -1;
+        }
+        .flavour-content{
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(100px);
+        }
+    }
+    .flavour-blue .flavour-ellipse-bg{
+            background: #3932FF73;
+    }
+    .flavour-green .flavour-ellipse-bg{
+            background: #8CFF3273;
+    }
+    .flavour-red .flavour-ellipse-bg{
+            background: #FF323273;
+    }
+}
+.flavour-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    h3{
+        font-size: 0.875rem;
+    }
+    .price{
+        margin-top: -1rem;
+        font-size: .75rem;
+    }
+}
+.flavour-content>img:first-child{
+    position: absolute;
+    width: 45%;
+    top: 5%;
+    left: 15%;
+    z-index: -1;
+}
+
+/*********************************/
+/* Best Supers */
+section.best-supers{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 4rem 8rem;
+}
+section.best-supers>.content{
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(102.59deg, #1A1F01 -2.4%, rgba(6, 6, 8, 0.45) 139.54%);
+    border-radius: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    h1{
+        font-size: 4rem;
+        font-family: 'HelveticaNowMicroBold', sans-serif;
+        text-transform: uppercase;
+    }
+    p{
+        font-size: .875rem;
+        width: 40%;
+        text-align: center;
+    }
+}
+section.best-supers>.content{
+    position: relative;
+    overflow: hidden;
+    .best-supers-imgbox{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        transition: 1s;
+        img{
+            /* background-color: lightgreen; */
+            position: absolute;
+            width: 100%;
+            height: 60%;
+            object-fit: contain;
+            transition: 1s;
+        }
+    }
+    .best-supers-imgbox.left{
+        left: 0;
+        bottom: 0;
+        right: none;
+        img{    
+            bottom: 0;
+            left: 0;
+            rotate: 20deg;
+            /* height: 80%; */
+            transform: translateY(30%);
+            object-position: -100px -10px;
+            scale: 1.2;
+        }
+    }
+    .best-supers-imgbox.right{
+        top: 0;
+        right: 0;
+        left: none;
+        img{
+            object-position: 100px -10px;
+            scale: 1.2;
+            rotate: -15deg;
+        }
+    }
+}
+
+
+
+/* Reusable Gradient Button */
+.gradient-button{
+    background: linear-gradient(94.25deg, #65FF98 4.65%, #9DBA08 113.58%);
+    padding: 1.5rem 3rem;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+    font-family: 'HelveticaNowMicroBold', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.gradient-button::before{
+    content: '';
+    position: absolute;
+    top: 90%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(94.25deg, #65FF98 4.65%, #9DBA08 113.58%);
+    border-radius: 12px;
+    scale: .8   ;
+    filter: blur(10px);
+}
+
+@media screen and (max-width:1536px) {
+    section.best-supers{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        padding: 4rem min(8rem,10%);
+    }
+    section.best-supers>.content{
+        position: relative;
+        overflow: hidden;
+        h1{
+            font-size: min(3rem,8vw);
+        }
+        .best-supers-imgbox{
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            transition: 1s;
+            img{
+                /* background-color: lightgreen; */
+                position: absolute;
+                width: 100%;
+                height: 60%;
+                object-fit: contain;
+                transition: 1s;
+            }
+        }
+        .best-supers-imgbox.left{
+            left: 0;
+            bottom: 0;
+            right: none;
+            img{    
+                bottom: 0;
+                left: 0;
+                rotate: 20deg;
+                /* height: 80%; */
+                transform: translateY(30%);
+                object-position: -100px -10px;
+                scale: 1.2;
+            }
+        }
+        .best-supers-imgbox.right{
+            top: 0;
+            right: 0;
+            left: none;
+            img{
+                object-position: 100px -10px;
+                scale: 1.2;
+                rotate: -15deg;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1280px) {
+    header{
+        padding: 1rem min(8rem,10%);
+    }
+    header nav ul{
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+    section.explore-flavours>.content .flavours-container{
+        display: flex;
+        justify-content: center;
+        height: 70%;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 3%;
+        .flavour{
+            width: 40%;
+        }
+        .flavour-blue .flavour-ellipse-bg{
+                background: #3932FF73;
+        }
+        .flavour-green .flavour-ellipse-bg{
+                background: #8CFF3273;
+        }
+        .flavour-red .flavour-ellipse-bg{
+                background: #FF323273;
+        }
+    }
+    section.nutritonal-info>.content>.info-cards{
+        gap: 4rem;
+        flex-wrap: wrap;
+    }
+    section.nutritonal-info>.content>h2{
+        font-family: 'HelveticaNowMicroBold', sans-serif;
+        font-size: min(3rem,8vw);
+        width: 100%;
+        margin: auto;
+        margin-bottom: .5em;
+        font-weight: 700;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    section.explore-flavours>.content{
+        padding: 4rem 6rem;
+        h2{
+            font-size: min(3rem,8vw);
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    header{
+        padding: 2rem min(4rem,5%);
+    }
+    header .logo{
+        width: min(80px,10%);
+        height: 80px;
+    }
+    header .logo img{
+        height: 100%;
+    }
+    header nav ul{
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+    }
+    section.explore-flavours>.content .flavours-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;    
+        width: 100%;
+        gap: max(3%,2rem);
+    }
+    .flavour-content>img:first-child{
+        position: absolute;
+        width: 80%;
+        top: 5%;
+        left: 15%;
+        z-index: -1;
+    }
+    section.best-supers>.content{
+        position: relative;
+        overflow: hidden;
+        h1{
+            font-size: min(3rem,8vw);
+        }
+        .best-supers-imgbox{
+            width: 60%;
+            img{
+                /* background-color: lightgreen; */
+                position: absolute;
+                width: 100%;
+                height: 60%;
+                object-fit: contain;
+                transition: 1s;
+            }
+        }
+        .best-supers-imgbox.left{
+            img{    
+                object-position: -5px 80px;
+                scale: 1.2;
+            }
+        }
+        .best-supers-imgbox.right{
+            img{
+                object-position: 100px 40px;
+                scale: 1.2;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header{
+        overflow-x: hidden;
+    }
+    header .hamburger{
+        display: block;
+        position: relative;
+        cursor: pointer;
+        z-index: 1000;
+        .hamburger-line{
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 7px 0;
+            transition: .5s;
+            border-radius: 5px;
+        }
+    }
+    header .hamburger.active{
+        .hamburger-line:nth-child(1){
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger-line:nth-child(2){
+            transform: translateX(100px);
+            opacity: 0;
+        }
+        .hamburger-line:nth-child(3){
+            transform: rotate(-45deg) translate(10px, -10px);
+        }
+    }
+    header nav ul{
+        position: fixed;
+        transform: translateX(100%);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+        touch-action: none;
+        transition: .5s;
+        li a{
+            font-size: 2rem;
+        }
+    }
+    header nav ul.active{
+        position: fixed;
+        transform: translateX(0);
+        z-index: 10;
+        backdrop-filter: blur(10px);
+    }
+    section.nutritonal-info .big-text-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: min(3rem,8vw);
+        span.zero{
+            font-size: 6em;
+            /* -webkit-text-stroke: red; */
+            /* -webkit-text-stroke-width: 2px; */
+        }
+        p{
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    section.explore-flavours>.content .flavours-container{
+        display: flex;
+        justify-content: space-between;
+        height: 70%;
+        width: 100%;
+        gap: max(3%,2rem);
+        .flavour{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+    }   
+    .flavour-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        h3{
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        .price{
+            margin-top: -1rem;
+            font-size: .75rem;
+            text-align: center;
+        }
+    }
+    .flavour-content>img:first-child{
+        position: absolute;
+        width: 80%;
+        top: 5%;
+        left: 15%;
+        z-index: -1;
+    }
+    .flavour-content>img:nth-child(2){
+        width: min(150%,600px);
+    }
+    section.best-supers{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        padding: 4rem min(4rem,5%);
+    }
+    section.best-supers>.content{
+        position: relative;
+        overflow: hidden;
+        p{
+            font-size: .875rem;
+            width: 90%;
+            text-align: center;
+            line-height: 1.5;
+        }
+        h1{
+            font-size: min(3rem,8vw);
+        }
+        .best-supers-imgbox{
+            width: 60%;
+            img{
+                /* background-color: lightgreen; */
+                position: absolute;
+                width: 100%;
+                height: 60%;
+                object-fit: contain;
+                transition: 1s;
+            }
+        }
+        .best-supers-imgbox.left{
+            img{    
+                object-position: -5px 80px;
+                scale: 1.2;
+            }
+        }
+        .best-supers-imgbox.right{
+            img{
+                object-position: 100px 40px;
+                scale: 1.2;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    section.best-supers>.content{
+        position: relative;
+        overflow: hidden;
+        p{
+            font-size: .875rem;
+            width: 90%;
+            text-align: center;
+            line-height: 1.5;
+        }
+        h1{
+            font-size: min(3rem,8vw);
+        }
+        .best-supers-imgbox{
+            width: 60%;
+            img{
+                /* background-color: lightgreen; */
+                position: absolute;
+                width: 100%;
+                height: 60%;
+                object-fit: contain;
+                transition: 1s;
+            }
+        }
+        .best-supers-imgbox.left{
+            img{    
+                object-position: 30px 95px;
+                scale: 1.2;
+            }
+        }
+        .best-supers-imgbox.right{
+            img{
+                object-position: -14px 105px;
+                scale: 1.2;
+            }
+        }
+    }
+}
