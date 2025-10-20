@@ -25,6 +25,27 @@ body{
     position: relative;
     overflow-x: hidden;
 }
+/***** cursor effect *****/
+.cursor {
+    width: 20px;
+    height: 20px;
+    background: #ffffff20;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    z-index: 9999999;
+}  
+.cursor-follower {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transition: transform 0.15s ease;
+    mix-blend-mode: difference;z-index: 9999999;
+}
 
 header{
     display: flex;
@@ -43,6 +64,8 @@ header .logo{
     width: 100px;
     height: 100px;
     display: inline-block;
+    position: relative;
+    z-index: 1000;
 }
 header .hamburger{
     display: none;
@@ -206,6 +229,10 @@ section.hero>.ellipse{
     font-size: 1.5rem;
     padding: 0 1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+.cart-buttons-container .cart-button:active{
+    transform: scale(0.8);
 }
 .cart-buttons-container .cart-count{
     display: flex;
@@ -432,6 +459,7 @@ section.best-supers>.content{
     }
     p{
         font-size: .875rem;
+        line-height: 1.8;
         width: 40%;
         text-align: center;
     }
@@ -495,6 +523,9 @@ section.best-supers>.content{
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    &:active{
+        transform: scale(0.8);
+    }
 }
 .gradient-button::before{
     content: '';
@@ -828,7 +859,8 @@ section.best-supers>.content{
         transform: translateX(-50%);
         width: 50%;
     }
-    .content>.imgbox>img:last-child{   
+    .content>.imgbox>img:last-child{
+        max-width: 90%;   
         position: static;
         object-position: center;
     }
@@ -946,6 +978,11 @@ section.best-supers>.content{
 @media screen and (max-width: 480px) {
     section.hero>.content{
         padding: 4rem 2rem;
+    }
+    .content>.imgbox>img:last-child{
+        width: 80%;   
+        position: static;
+        object-position: center;
     }
     /* Thumnails */
     .thumnails{
