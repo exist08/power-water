@@ -385,6 +385,7 @@ section.explore-flavours>.content .flavours-container{
         width: 30%;
         height: 100%;
         position: relative;
+        transition: .5s;
         .flavour-ellipse-bg{
             position: absolute;
             top: 0;
@@ -400,6 +401,9 @@ section.explore-flavours>.content .flavours-container{
             width: 100%;
             height: 100%;
             backdrop-filter: blur(100px);
+        }
+        &:hover{
+            scale: 1.05;
         }
     }
     .flavour-blue .flavour-ellipse-bg{
